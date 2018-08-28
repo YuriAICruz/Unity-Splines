@@ -1,0 +1,10 @@
+{
+    "name": "Splines",
+    "references": [
+        "Utils"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
