@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
+using Graphene.Utils;
 using UnityEngine;
-using Utils;
 
 namespace Splines.Paths
 {

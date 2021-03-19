@@ -1,5 +1,4 @@
 ﻿using System;
-using Debuging;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -43,7 +42,9 @@ namespace Splines
                 }
                 catch (System.Exception e)
                 {
-                    ConsoleDebug.Log(e.ToString());
+#if DEV_MODE
+                    Debug.Log(e.ToString());
+#endif
                 }
             }
 
@@ -214,7 +215,9 @@ namespace Splines
 
         private void CreateHandles()
         {
-            var handleRotation = Tools.pivotRotation == PivotRotation.Local ? _self.transform.rotation : Quaternion.identity;
+            var handleRotation = Tools.pivotRotation == PivotRotation.Local
+                ? _self.transform.rotation
+                : Quaternion.identity;
 
             for (int i = 0, n = _spline.Count() - 1; i < n; i += 3)
             {
@@ -263,8 +266,10 @@ namespace Splines
                 Handles.color = Color.gray;
                 if (!EditorApplication.isPlaying)
                 {
-                    Handles.DrawLine(_spline.GetPointTransformed(i - 1, _self.transform), _spline.GetPointTransformed(i, _self.transform));
-                    Handles.DrawLine(_spline.GetPointTransformed(i + 1, _self.transform), _spline.GetPointTransformed(i + 2, _self.transform));
+                    Handles.DrawLine(_spline.GetPointTransformed(i - 1, _self.transform),
+                        _spline.GetPointTransformed(i, _self.transform));
+                    Handles.DrawLine(_spline.GetPointTransformed(i + 1, _self.transform),
+                        _spline.GetPointTransformed(i + 2, _self.transform));
                 }
                 else
                 {
